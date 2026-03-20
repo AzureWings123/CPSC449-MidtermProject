@@ -6,9 +6,9 @@ import lombok.Data;
 import java.util.List;
 
 @Entity
-@Table(name="organizer")
+@Table(name="venue")
 @Data
-public class Organizer {
+public class Venue {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,11 +17,14 @@ public class Organizer {
     @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false,
-            unique = true)
-    private String email;
+    @Column(nullable = false)
+    private String address;
 
-    //optional
-    private Long phone;
+    @Column(nullable = false)
+    private String city;
+
+    @Column(nullable = false)
+    private Long total_capacity;
+
 
 }

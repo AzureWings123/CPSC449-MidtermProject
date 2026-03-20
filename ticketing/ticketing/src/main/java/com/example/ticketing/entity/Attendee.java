@@ -6,9 +6,9 @@ import lombok.Data;
 import java.util.List;
 
 @Entity
-@Table(name="organizer")
+@Table(name = "attendee")
 @Data
-public class Organizer {
+public class Attendee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,8 +20,5 @@ public class Organizer {
     @Column(nullable = false,
             unique = true)
     private String email;
-
-    //optional
-    private Long phone;
 
 }

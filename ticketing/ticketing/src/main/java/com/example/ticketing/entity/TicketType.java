@@ -6,22 +6,22 @@ import lombok.Data;
 import java.util.List;
 
 @Entity
-@Table(name="organizer")
+@Table(name = "ticket_type")
 @Data
-public class Organizer {
+public class TicketType {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false,
-            unique = true)
-    private String email;
+    @Column(nullable = false)
+    private Double price;
 
-    //optional
-    private Long phone;
+    private Integer quantity_available;
+
+
+
 
 }
