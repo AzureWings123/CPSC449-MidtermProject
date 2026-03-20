@@ -21,4 +21,6 @@ public class Attendee {
             unique = true)
     private String email;
 
+    @ManyToMany(mappedBy = "attendees")
+    private List<Booking> bookings;
 }
