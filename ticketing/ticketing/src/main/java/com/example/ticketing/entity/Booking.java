@@ -28,5 +28,19 @@ public class Booking {
     @Enumerated(EnumType.STRING)
     private Payment payment;
 
+    @ManyToMany
+    @JoinTable(
+            name = "attendee_bookings",
+            joinColumns = @JoinColumn(name = "booking_id"),
+            inverseJoinColumns = @JoinColumn(name = "attendee_id")
+    )
+    private List<Attendee> attendees;
 
+    @ManyToMany
+    @JoinTable(
+            name = "ticket_types_bookings",
+            joinColumns = @JoinColumn(name = "booking_id"),
+            inverseJoinColumns = @JoinColumn(name = "ticket_type_id")
+    )
+    private List<TicketType> ticket_types;
 }

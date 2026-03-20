@@ -33,5 +33,14 @@ public class Event {
     @Enumerated(EnumType.STRING)
     private Status status;
 
+    @ManyToOne
+    @JoinColumn(name = "organizer_id")
+    private Organizer organizer;
 
+    @ManyToOne
+    @JoinColumn(name = "venue_id")
+    private Venue venue;
+
+    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
+    private List<TicketType> ticket_types;
 }

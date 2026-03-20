@@ -26,5 +26,7 @@ public class Venue {
     @Column(nullable = false)
     private Long total_capacity;
 
+    @OneToMany(mappedBy = "venue", cascade = CascadeType.ALL)
+    private List<Event> events;
 
 }

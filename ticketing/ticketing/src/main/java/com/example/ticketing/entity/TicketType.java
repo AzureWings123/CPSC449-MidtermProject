@@ -21,7 +21,11 @@ public class TicketType {
 
     private Integer quantity_available;
 
+    @ManyToOne
+    @JoinColumn(name = "event_id")
+    private Event event;
 
-
+    @ManyToMany(mappedBy = "ticket_types")
+    private List<Booking> bookings;
 
 }

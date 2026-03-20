@@ -24,4 +24,7 @@ public class Organizer {
     //optional
     private Long phone;
 
+    @OneToMany(mappedBy = "organizer", cascade = CascadeType.ALL)
+    private List<Event> events;
+
 }
