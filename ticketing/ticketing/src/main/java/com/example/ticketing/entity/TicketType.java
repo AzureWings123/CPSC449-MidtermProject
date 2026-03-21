@@ -14,7 +14,11 @@ public class TicketType {
     private Long ticketTypeId;
 
     private String name;
+
+    @Column(nullable = false)
     private BigDecimal price;
+
+    @Column(nullable = false)
     private Integer quantityAvailable;
 
     @ManyToOne
