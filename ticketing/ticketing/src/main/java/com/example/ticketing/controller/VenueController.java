@@ -3,6 +3,7 @@ package com.example.ticketing.controller;
 
 import com.example.ticketing.entity.Organizer;
 import com.example.ticketing.entity.Venue;
+import com.example.ticketing.service.VenueService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,13 +15,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/venues")
 public class VenueController {
 
-    /*
+
     @Autowired
     private VenueService venueService;
 
     @PostMapping
     public ResponseEntity<Venue> createVenue(@RequestBody Venue venue) {
-        Venue created = venueService.save(venue);
+        Venue created = venueService.createVenue(venue);
         return ResponseEntity.status(201).body(created);
-    } */
+    }
 }
