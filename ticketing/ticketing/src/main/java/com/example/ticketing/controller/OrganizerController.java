@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/organizers")
 public class OrganizerController {
 
-
     @Autowired
     private OrganizerService organizerService;
 
+    // POST /api/organizers - creates a new organizer
     @PostMapping
     public ResponseEntity<Organizer> createOrganizer(@RequestBody Organizer organizer){
         Organizer created = organizerService.createOrganizer(organizer);

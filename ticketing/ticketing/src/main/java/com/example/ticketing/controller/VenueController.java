@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/venues")
 public class VenueController {
 
-
     @Autowired
     private VenueService venueService;
 
+    // POST /api/venues - create a new venue
     @PostMapping
     public ResponseEntity<Venue> createVenue(@RequestBody Venue venue) {
         Venue created = venueService.createVenue(venue);

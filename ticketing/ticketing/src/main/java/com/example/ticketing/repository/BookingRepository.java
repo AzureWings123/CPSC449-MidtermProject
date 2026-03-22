@@ -21,6 +21,6 @@ public interface BookingRepository extends JpaRepository<Booking, Long> {
     //Query that calculates total revenue for an event
     @Query("SELECT SUM(b.ticketType.price) FROM Booking b " +
             "WHERE b.ticketType.event.eventId = :eventId " +
-            "AND b.paymentStatus = com.example.ticketing.enums.PaymentStatus.CONFIRMED")
+            "AND b.paymentStatus = 'CONFIRMED'")
     BigDecimal calculateRevenue(Long eventId);
 }
