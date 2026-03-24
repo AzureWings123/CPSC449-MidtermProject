@@ -1,10 +1,11 @@
 package com.example.ticketing.controller;
 
 import com.example.ticketing.dto.EventResponseDTO;
+import com.example.ticketing.entity.Event;
+import com.example.ticketing.entity.Organizer;
 import com.example.ticketing.service.EventService;
 import com.example.ticketing.service.OrganizerService;
 import com.example.ticketing.service.VenueService;
-import com.example.ticketing.entity.Event;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,13 +25,13 @@ public class EventController {
 
     // POST /api/events - creates a new event
     @PostMapping
-    public ResponseEntity<EventResponseDTO> createEvent(@PathVariable Long organizerId,
-                                                        @PathVariable Long venueId,
-                                                        @RequestBody Event event) {
-        EventResponseDTO dto = eventService.createEvent(organizerId, venueId, event);
-
-        return ResponseEntity.status(201).body(dto);
+    public EventResponseDTO createEvent(@RequestBody Event event,
+                                        @RequestParam Long organizerId,
+                                        @RequestParam Long venueId) {
+        EventResponseDTO created = eventService.createEvent(organizerId, venueId, event);
+        return created;
     }
+
     // GET /api/events - lists upcoming events
 
     // GET /api/events/{id} - event details with ticket types
