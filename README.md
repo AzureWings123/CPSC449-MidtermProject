@@ -15,7 +15,6 @@ Cesar Carrillo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;819760794
 [Name]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[CWID]  
 [Name]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[CWID]
 ## API Endpoints
-***
 ### POST /api/organizers
 Creates a new organizer.  
 #### Request:
@@ -43,6 +42,13 @@ List of all upcoming events.
 ![Image of GET Endpoint](screenshots/Image17.png)
 #### Response:
 ![Image of GET Endpoint](screenshots/Image18.png)
+***
+### GET /api/events/{id}
+Gets event details with ticket types.
+#### Request:
+![Image of GET Endpoint](screenshots/Image21.png)
+#### Response:
+![Image of GET Endpoint](screenshots/Image22.png)
 ***
 ### POST /api/attendees
 Registers a new attendee.  
