@@ -9,6 +9,8 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+
 @Service
 public class TicketTypeService {
 
@@ -26,6 +28,9 @@ public class TicketTypeService {
 
         ticketType.setEvent(event);
         TicketType saved = ticketTypeRepository.save(ticketType);
+        if(ticketType.getPrice().compareTo(BigDecimal.ZERO) == -1) {
+            throw new IllegalArgumentException("Price cannot be negative");
+        }
 
         return mapToDTO(saved);
     }

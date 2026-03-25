@@ -47,7 +47,6 @@ public class BookingService {
 
         Attendee attendee = attendeeRepository.findById(attendeeId).orElse(null);
         if (attendee == null) {
-            //throw new RuntimeException("Attendee not found");
             throw new NullPointerException("Attendee not found");
         }
 
