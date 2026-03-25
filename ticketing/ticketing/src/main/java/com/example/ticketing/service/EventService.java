@@ -37,6 +37,15 @@ public class EventService {
     // create event
     @Transactional
     public EventResponseDTO createEvent(Long organizerId, Long venueId, Event event) {
+
+        if(event.getTitle() == null) {
+            throw new IllegalArgumentException("Event title required.");
+        }
+
+        if(event.getEventDate() == null) {
+            throw new IllegalArgumentException("Event date required");
+        }
+        
         Organizer organizer = organizerRepository.findById(organizerId).orElse(null);
         if (organizer == null) {
             throw new NullPointerException("Organizer not found");
