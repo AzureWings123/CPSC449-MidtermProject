@@ -12,8 +12,10 @@ public class Booking {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long bookingId;
 
-    @Column(unique = true)
+    @Column(nullable = false, unique = true)
     private String bookingReference;
+
+    @Column(nullable = false)
     private LocalDateTime bookingDate;
 
     @Enumerated(EnumType.STRING)

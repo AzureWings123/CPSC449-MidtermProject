@@ -52,14 +52,14 @@ public class EventService {
         event.setStatus(EventStatus.UPCOMING);
 
         Event newEvent = eventRepository.save(event);
-        return toDTO(newEvent);
+        return toDTO(newEvent, false);
     }
 
     // get all upcoming events
     public List<EventResponseDTO> getUpcomingEvents() {
         return eventRepository.findByStatus(EventStatus.UPCOMING)
                 .stream()
-                .map(event -> toDTO(event))
+                .map(event -> toDTO(event, false))
                 .collect(Collectors.toList());
     }
 
@@ -69,7 +69,7 @@ public class EventService {
         if (event == null) {
             throw new RuntimeException("Event not found");
         }
-        return toDTO(event);
+        return toDTO(event, true);
     }
 
     // get revenue for an event
@@ -88,14 +88,15 @@ public class EventService {
     }
 
     // map to DTO
-    private EventResponseDTO toDTO(Event event) {
-        List<TicketTypeDTO> ticketTypes = event.getTicketTypes() == null ? List.of() :
+    private EventResponseDTO toDTO(Event event, boolean includeTicketTypes) {
+        List<TicketTypeDTO> ticketTypes = includeTicketTypes && event.getTicketTypes() != null ?
                 event.getTicketTypes().stream()
                         .map(ticketType -> new TicketTypeDTO(
                                 ticketType.getName(),
                                 ticketType.getPrice(),
                                 ticketType.getQuantityAvailable()))
-                        .collect(Collectors.toList());
+                        .collect(Collectors.toList())
+                : List.of();
 
         return new EventResponseDTO(
                 event.getTitle(),

@@ -1,6 +1,7 @@
 package com.example.ticketing.controller;
 
 
+import com.example.ticketing.dto.VenueResponseDTO;
 import com.example.ticketing.entity.Organizer;
 import com.example.ticketing.entity.Venue;
 import com.example.ticketing.service.VenueService;
@@ -20,8 +21,8 @@ public class VenueController {
 
     // POST /api/venues - create a new venue
     @PostMapping
-    public ResponseEntity<Venue> createVenue(@RequestBody Venue venue) {
-        Venue created = venueService.createVenue(venue);
+    public ResponseEntity<VenueResponseDTO> createVenue(@RequestBody Venue venue) {
+        VenueResponseDTO created = venueService.createVenue(venue);
         return ResponseEntity.status(201).body(created);
     }
 }

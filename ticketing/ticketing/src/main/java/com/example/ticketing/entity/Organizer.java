@@ -13,9 +13,10 @@ public class Organizer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long organizerId;
 
+    @Column(nullable = false)
     private String name;
 
-    @Column(unique = true)
+    @Column(nullable = false, unique = true)
     private String email;
 
     private String phone;

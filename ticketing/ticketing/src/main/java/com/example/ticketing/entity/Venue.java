@@ -11,9 +11,16 @@ public class Venue {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long venueId;
 
+    @Column(nullable = false)
     private String name;
+
+    @Column(nullable = false)
     private String address;
+
+    @Column(nullable = false)
     private String city;
+
+    @Column(nullable = false)
     private int totalCapacity;
 
     @OneToMany(mappedBy = "venue")

@@ -1,6 +1,7 @@
 package com.example.ticketing.service;
 
 import com.example.ticketing.dto.AttendeeBookingsDTO;
+import com.example.ticketing.dto.AttendeeResponseDTO;
 import com.example.ticketing.entity.Attendee;
 import com.example.ticketing.repository.AttendeeRepository;
 import jakarta.transaction.Transactional;
@@ -18,8 +19,22 @@ public class AttendeeService {
 
     // register attendee
     @Transactional
-    public Attendee registerAttendee(Attendee attendee) {
-        return attendeeRepository.save(attendee);
+    public AttendeeResponseDTO registerAttendee(Attendee attendee) {
+
+        if(attendee.getEmail() == null || attendee.getEmail().isBlank()) {
+            throw new RuntimeException("Email is required.");
+        }
+
+        if(attendee.getName() == null || attendee.getName().isBlank()) {
+            throw new RuntimeException("Name is required.");
+        }
+
+        if(attendeeRepository.existsByEmail(attendee.getEmail())) {
+            throw new RuntimeException("Email is already registered.");
+        }
+        Attendee saved = attendeeRepository.save(attendee);
+
+        return mapToDTO(saved);
     }
 
     // get attendee bookings
@@ -33,5 +48,13 @@ public class AttendeeService {
                 attendee.getName(),
                 bookingService.getBookingsByAttendee(attendeeId)
         );
+    }
+
+    private AttendeeResponseDTO mapToDTO(Attendee attendee) {
+        AttendeeResponseDTO dto = new AttendeeResponseDTO();
+        dto.setAttendeeId(attendee.getAttendeeId());
+        dto.setName(attendee.getName());
+        dto.setEmail(attendee.getEmail());
+        return dto;
     }
 }

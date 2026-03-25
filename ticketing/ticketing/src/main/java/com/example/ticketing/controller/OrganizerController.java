@@ -1,6 +1,7 @@
 package com.example.ticketing.controller;
 
 
+import com.example.ticketing.dto.OrganizerResponseDTO;
 import com.example.ticketing.entity.Organizer;
 import com.example.ticketing.service.OrganizerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +20,8 @@ public class OrganizerController {
 
     // POST /api/organizers - creates a new organizer
     @PostMapping
-    public ResponseEntity<Organizer> createOrganizer(@RequestBody Organizer organizer){
-        Organizer created = organizerService.createOrganizer(organizer);
+    public ResponseEntity<OrganizerResponseDTO> createOrganizer(@RequestBody Organizer organizer){
+        OrganizerResponseDTO created = organizerService.createOrganizer(organizer);
         return ResponseEntity.status(201).body(created);
     }
 }
