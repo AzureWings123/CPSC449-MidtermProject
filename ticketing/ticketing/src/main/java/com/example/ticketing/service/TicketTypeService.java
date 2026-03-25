@@ -22,7 +22,7 @@ public class TicketTypeService {
     @Transactional
     public TicketTypeDTO createTicketType(Long eventId, TicketType ticketType) {
         Event event = eventRepository.findById(eventId)
-                .orElseThrow(() -> new RuntimeException("Event not found."));
+                .orElseThrow(() -> new NullPointerException("Event not found."));
 
         ticketType.setEvent(event);
         TicketType saved = ticketTypeRepository.save(ticketType);

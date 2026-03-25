@@ -21,15 +21,15 @@ public class OrganizerService {
     public OrganizerResponseDTO createOrganizer(Organizer organizer) {
 
         if(organizer.getName() == null || organizer.getName().isBlank()) {
-            throw new RuntimeException("Organizer name is required.");
+            throw new NullPointerException("Organizer name is required.");
         }
 
         if(organizer.getEmail() == null || organizer.getEmail().isBlank()) {
-            throw new RuntimeException("Organizer email is required.");
+            throw new NullPointerException("Organizer email is required.");
         }
 
         if(organizerRepository.existsByEmail(organizer.getEmail())) {
-            throw new RuntimeException("Email is already registered.");
+            throw new IllegalArgumentException("Email is already registered.");
         }
 
         Organizer saved = organizerRepository.save(organizer);

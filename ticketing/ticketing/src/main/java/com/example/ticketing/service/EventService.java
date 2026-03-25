@@ -39,12 +39,12 @@ public class EventService {
     public EventResponseDTO createEvent(Long organizerId, Long venueId, Event event) {
         Organizer organizer = organizerRepository.findById(organizerId).orElse(null);
         if (organizer == null) {
-            throw new RuntimeException("Organizer not found");
+            throw new NullPointerException("Organizer not found");
         }
 
         Venue venue = venueRepository.findById(venueId).orElse(null);
         if (venue == null) {
-            throw new RuntimeException("Venue not found");
+            throw new NullPointerException("Venue not found");
         }
 
         event.setOrganizer(organizer);
@@ -67,7 +67,7 @@ public class EventService {
     public EventResponseDTO getEventById(Long eventId) {
         Event event = eventRepository.findById(eventId).orElse(null);
         if (event == null) {
-            throw new RuntimeException("Event not found");
+            throw new NullPointerException("Event not found");
         }
         return toDTO(event, true);
     }
@@ -76,7 +76,7 @@ public class EventService {
     public RevenueDTO getEventRevenue(Long eventId) {
         Event event = eventRepository.findById(eventId).orElse(null);
         if (event == null) {
-            throw new RuntimeException("Event not found");
+            throw new NullPointerException("Event not found");
         }
 
         BigDecimal revenue = bookingRepository.calculateRevenue(eventId);
