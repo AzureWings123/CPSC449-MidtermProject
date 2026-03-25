@@ -12,7 +12,7 @@ types of tickets, and allow attendees to book tickets. The system manages:
 * Bookings: Records ticket purchases, payment status, and booking references.
 ## Team Members:
 Cesar Carrillo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;819760794  
-[Name]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[CWID]  
+Vanessa Ragan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;888419215  
 [Name]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[CWID]
 ## API Endpoints
 ### POST /api/organizers
