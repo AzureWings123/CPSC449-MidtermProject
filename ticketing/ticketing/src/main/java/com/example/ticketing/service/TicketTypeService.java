@@ -26,11 +26,11 @@ public class TicketTypeService {
         Event event = eventRepository.findById(eventId)
                 .orElseThrow(() -> new NullPointerException("Event not found."));
 
+        if(ticketType.getPrice().compareTo(BigDecimal.ZERO) == -1) {
+            throw new IllegalArgumentException("Price cannot be negative.");
+        }
         ticketType.setEvent(event);
         TicketType saved = ticketTypeRepository.save(ticketType);
-        if(ticketType.getPrice().compareTo(BigDecimal.ZERO) == -1) {
-            throw new IllegalArgumentException("Price cannot be negative");
-        }
 
         return mapToDTO(saved);
     }
