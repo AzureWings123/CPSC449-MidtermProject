@@ -13,7 +13,7 @@ types of tickets, and allow attendees to book tickets. The system manages:
 ## Team Members:
 Cesar Carrillo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;819760794  
 Vanessa Ragan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;888419215  
-[Name]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[CWID]
+Hunter Tran&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;886474907
 ## API Endpoints
 ### POST /api/organizers
 Creates a new organizer.  
