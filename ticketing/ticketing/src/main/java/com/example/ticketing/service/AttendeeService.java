@@ -22,15 +22,15 @@ public class AttendeeService {
     public AttendeeResponseDTO registerAttendee(Attendee attendee) {
 
         if(attendee.getEmail() == null || attendee.getEmail().isBlank()) {
-            throw new RuntimeException("Email is required.");
+            throw new NullPointerException("Email is required.");
         }
 
         if(attendee.getName() == null || attendee.getName().isBlank()) {
-            throw new RuntimeException("Name is required.");
+            throw new NullPointerException("Name is required.");
         }
 
         if(attendeeRepository.existsByEmail(attendee.getEmail())) {
-            throw new RuntimeException("Email is already registered.");
+            throw new IllegalArgumentException("Email is already registered.");
         }
         Attendee saved = attendeeRepository.save(attendee);
 
@@ -41,7 +41,7 @@ public class AttendeeService {
     public AttendeeBookingsDTO getAttendeeBookings(Long attendeeId) {
         Attendee attendee = attendeeRepository.findById(attendeeId).orElse(null);
         if (attendee == null) {
-            throw new RuntimeException("Attendee not found");
+            throw new NullPointerException("Attendee not found");
         }
 
         return new AttendeeBookingsDTO(

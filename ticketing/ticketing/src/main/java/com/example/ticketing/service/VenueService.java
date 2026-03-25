@@ -18,19 +18,19 @@ public class VenueService {
     public VenueResponseDTO createVenue(Venue venue) {
 
         if(venue.getName() == null || venue.getName().isBlank()) {
-            throw new RuntimeException("Venue name is required.");
+            throw new NullPointerException("Venue name is required.");
         }
 
         if(venue.getAddress() == null || venue.getAddress().isBlank()) {
-            throw new RuntimeException("Venue address is required.");
+            throw new NullPointerException("Venue address is required.");
         }
 
         if(venue.getCity() == null || venue.getCity().isBlank()) {
-            throw new RuntimeException("Venue city is required.");
+            throw new NullPointerException("Venue city is required.");
         }
 
         if(venue.getTotalCapacity() <= 0) {
-            throw new RuntimeException("Venue capacity must be greater than 0.");
+            throw new IllegalArgumentException("Venue capacity must be greater than 0.");
         }
 
         Venue saved = venueRepository.save(venue);
