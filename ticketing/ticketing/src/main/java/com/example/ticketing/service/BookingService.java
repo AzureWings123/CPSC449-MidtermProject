@@ -9,11 +9,8 @@ import com.example.ticketing.repository.AttendeeRepository;
 import com.example.ticketing.repository.BookingRepository;
 import com.example.ticketing.repository.TicketTypeRepository;
 import jakarta.transaction.Transactional;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -37,8 +34,7 @@ public class BookingService {
 
         TicketType ticketType = ticketTypeRepository.findById(ticketTypeId).orElse(null);
         if (ticketType == null) {
-            //throw new NullPointerException("Ticket type not found.")
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Ticket type not found.");
+            throw new NullPointerException("Ticket type not found.");
         }
 
         if (ticketType.getQuantityAvailable() <= 0) {

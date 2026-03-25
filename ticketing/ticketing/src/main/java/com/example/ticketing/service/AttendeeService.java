@@ -22,11 +22,11 @@ public class AttendeeService {
     public AttendeeResponseDTO registerAttendee(Attendee attendee) {
 
         if(attendee.getEmail() == null || attendee.getEmail().isBlank()) {
-            throw new NullPointerException("Email is required.");
+            throw new IllegalArgumentException("Email is required.");
         }
 
         if(attendee.getName() == null || attendee.getName().isBlank()) {
-            throw new NullPointerException("Name is required.");
+            throw new IllegalArgumentException("Name is required.");
         }
 
         if(attendeeRepository.existsByEmail(attendee.getEmail())) {

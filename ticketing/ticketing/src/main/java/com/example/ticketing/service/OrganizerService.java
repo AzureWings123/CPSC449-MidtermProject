@@ -21,11 +21,11 @@ public class OrganizerService {
     public OrganizerResponseDTO createOrganizer(Organizer organizer) {
 
         if(organizer.getName() == null || organizer.getName().isBlank()) {
-            throw new NullPointerException("Organizer name is required.");
+            throw new IllegalArgumentException("Organizer name is required.");
         }
 
         if(organizer.getEmail() == null || organizer.getEmail().isBlank()) {
-            throw new NullPointerException("Organizer email is required.");
+            throw new IllegalArgumentException("Organizer email is required.");
         }
 
         if(organizerRepository.existsByEmail(organizer.getEmail())) {

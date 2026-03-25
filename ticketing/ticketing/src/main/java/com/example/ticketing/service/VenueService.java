@@ -18,15 +18,15 @@ public class VenueService {
     public VenueResponseDTO createVenue(Venue venue) {
 
         if(venue.getName() == null || venue.getName().isBlank()) {
-            throw new NullPointerException("Venue name is required.");
+            throw new IllegalArgumentException("Venue name is required.");
         }
 
         if(venue.getAddress() == null || venue.getAddress().isBlank()) {
-            throw new NullPointerException("Venue address is required.");
+            throw new IllegalArgumentException("Venue address is required.");
         }
 
         if(venue.getCity() == null || venue.getCity().isBlank()) {
-            throw new NullPointerException("Venue city is required.");
+            throw new IllegalArgumentException("Venue city is required.");
         }
 
         if(venue.getTotalCapacity() <= 0) {
