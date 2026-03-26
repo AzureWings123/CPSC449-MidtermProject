@@ -26,8 +26,14 @@ public class TicketTypeService {
         Event event = eventRepository.findById(eventId)
                 .orElseThrow(() -> new NullPointerException("Event not found."));
 
+        if(ticketType.getPrice() == null) {
+            throw new IllegalArgumentException("Price is required.");
+        }
         if(ticketType.getPrice().compareTo(BigDecimal.ZERO) == -1) {
             throw new IllegalArgumentException("Price cannot be negative.");
+        }
+        if(ticketType.getQuantityAvailable() < 0) {
+            throw new IllegalArgumentException("Ticket quantity cannot be negative.");
         }
         ticketType.setEvent(event);
         TicketType saved = ticketTypeRepository.save(ticketType);
