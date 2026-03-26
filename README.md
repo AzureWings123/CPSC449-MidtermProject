@@ -92,4 +92,5 @@ Creates a ticket type for an event.
 #### Response:
 ![Image of POST Endpoint](screenshots/Image20.png)
 ***
-
+### Link to Live Demo Recording:
+https://youtu.be/tgRbn-k0Lv8
